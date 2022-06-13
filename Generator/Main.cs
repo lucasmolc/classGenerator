@@ -7,7 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 /*
- *  v1.0.0 - Desenvolvida uma ferramenta para auxiliar na geração de arquivos .cs a partir de arquivos .xsd
+ *  v1.0 - Desenvolvida uma ferramenta para auxiliar na geração de arquivos .cs a partir de arquivos .xsd
+ *  v1.1 - Atualizada a solução para que seja possível criar os arquivos .cs a partir de 1 arquivo .xsd. Adicionado um contador para os XSD's complementares.
  */
 
 namespace Generator
@@ -19,6 +20,7 @@ namespace Generator
             InitializeComponent();
         }
 
+        int tCount;
         int count = 0;
         string filePath, folderPath, exePath;
         List<string> importedFiles = new List<string>();
@@ -50,6 +52,7 @@ namespace Generator
             txtXSDImportados.Text = "";
             txtPastaETC.Text = "";
             txtProgramaXSD.Text = "";
+            txtContador.Text = "0/0";
             importedFiles = new List<string>();
         }
 
@@ -72,7 +75,9 @@ namespace Generator
                 {
                     importedFiles.Add(filesDialog.SafeFileNames[i]);
                 }
+                tCount = importedFiles.Count;
                 txtXSDImportados.Text = importedFiles[0];
+                txtContador.Text = "1/" + tCount;
             }
         }
 
@@ -82,13 +87,19 @@ namespace Generator
             {
                 if (count < importedFiles.Count)
                 {
+                    if (count == 0)
+                    {
+                        count++;
+                    }
                     txtXSDImportados.Text = importedFiles[count];
+                    txtContador.Text = count + 1 + "/" + tCount;
                     count++;
                 }
                 else
                 {
                     count = 0;
                     txtXSDImportados.Text = importedFiles[count];
+                    txtContador.Text = count + 1 + "/" + tCount;
                 }
             }
             catch (Exception ex)
@@ -102,13 +113,18 @@ namespace Generator
             try
             {
                 string nfse = filePath.Substring(0, filePath.Length - 4);
-                string chave = "\"" + exePath + "\" -c -l:c# -n:" + nfse + " " + filePath + " " + importedFiles[0];
+                string chave;
                 if (importedFiles.Count > 1)
                 {
+                    chave = "\"" + exePath + "\" -c -l:c# -n:" + nfse + " " + filePath + " " + importedFiles[0];
                     for (int i = 1; i < importedFiles.Count; i++)
                     {
                         chave = chave + " " + importedFiles[i];
                     }
+                }
+                else
+                {
+                    chave = "\"" + exePath + "\" -c -l:c# -n:" + nfse + " " + filePath;
                 }
 
                 string args = "@\"/k cd " + folderPath + " && dir && " + chave;

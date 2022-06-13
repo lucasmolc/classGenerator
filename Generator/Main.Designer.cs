@@ -51,6 +51,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFilesDialog = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogXSD_exe = new System.Windows.Forms.OpenFileDialog();
+            this.txtContador = new System.Windows.Forms.TextBox();
             this.pnl0.SuspendLayout();
             this.gpBoxXSD.SuspendLayout();
             this.SuspendLayout();
@@ -124,6 +125,7 @@
             // 
             this.gpBoxXSD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gpBoxXSD.Controls.Add(this.txtContador);
             this.gpBoxXSD.Controls.Add(this.btnProgramaXSD);
             this.gpBoxXSD.Controls.Add(this.txtProgramaXSD);
             this.gpBoxXSD.Controls.Add(this.label4);
@@ -165,9 +167,9 @@
             this.txtProgramaXSD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProgramaXSD.Enabled = false;
             this.txtProgramaXSD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgramaXSD.Location = new System.Drawing.Point(149, 161);
+            this.txtProgramaXSD.Location = new System.Drawing.Point(116, 161);
             this.txtProgramaXSD.Name = "txtProgramaXSD";
-            this.txtProgramaXSD.Size = new System.Drawing.Size(164, 23);
+            this.txtProgramaXSD.Size = new System.Drawing.Size(197, 23);
             this.txtProgramaXSD.TabIndex = 0;
             this.txtProgramaXSD.TabStop = false;
             this.txtProgramaXSD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -180,7 +182,7 @@
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 165);
+            this.label4.Location = new System.Drawing.Point(6, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 15);
             this.label4.TabIndex = 0;
@@ -219,9 +221,9 @@
             this.txtXSDImportados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtXSDImportados.Enabled = false;
             this.txtXSDImportados.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtXSDImportados.Location = new System.Drawing.Point(149, 117);
+            this.txtXSDImportados.Location = new System.Drawing.Point(116, 117);
             this.txtXSDImportados.Name = "txtXSDImportados";
-            this.txtXSDImportados.Size = new System.Drawing.Size(139, 23);
+            this.txtXSDImportados.Size = new System.Drawing.Size(128, 23);
             this.txtXSDImportados.TabIndex = 0;
             this.txtXSDImportados.TabStop = false;
             this.txtXSDImportados.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -234,7 +236,7 @@
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 121);
+            this.label3.Location = new System.Drawing.Point(18, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 15);
             this.label3.TabIndex = 0;
@@ -261,9 +263,9 @@
             this.txtPastaETC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPastaETC.Enabled = false;
             this.txtPastaETC.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPastaETC.Location = new System.Drawing.Point(149, 28);
+            this.txtPastaETC.Location = new System.Drawing.Point(116, 28);
             this.txtPastaETC.Name = "txtPastaETC";
-            this.txtPastaETC.Size = new System.Drawing.Size(164, 23);
+            this.txtPastaETC.Size = new System.Drawing.Size(197, 23);
             this.txtPastaETC.TabIndex = 0;
             this.txtPastaETC.TabStop = false;
             this.txtPastaETC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -276,7 +278,7 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(86, 30);
+            this.label2.Location = new System.Drawing.Point(53, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 0;
@@ -303,9 +305,9 @@
             this.txtXSDPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtXSDPrincipal.Enabled = false;
             this.txtXSDPrincipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtXSDPrincipal.Location = new System.Drawing.Point(149, 72);
+            this.txtXSDPrincipal.Location = new System.Drawing.Point(116, 72);
             this.txtXSDPrincipal.Name = "txtXSDPrincipal";
-            this.txtXSDPrincipal.Size = new System.Drawing.Size(164, 23);
+            this.txtXSDPrincipal.Size = new System.Drawing.Size(197, 23);
             this.txtXSDPrincipal.TabIndex = 0;
             this.txtXSDPrincipal.TabStop = false;
             this.txtXSDPrincipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -318,7 +320,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 76);
+            this.label1.Location = new System.Drawing.Point(33, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 0;
@@ -342,6 +344,26 @@
             // openFileDialogXSD_exe
             // 
             this.openFileDialogXSD_exe.FileName = "openFileDialog1";
+            // 
+            // txtContador
+            // 
+            this.txtContador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContador.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtContador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContador.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtContador.Enabled = false;
+            this.txtContador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContador.HideSelection = false;
+            this.txtContador.Location = new System.Drawing.Point(246, 117);
+            this.txtContador.Name = "txtContador";
+            this.txtContador.ReadOnly = true;
+            this.txtContador.Size = new System.Drawing.Size(42, 23);
+            this.txtContador.TabIndex = 13;
+            this.txtContador.TabStop = false;
+            this.txtContador.Text = "0/0";
+            this.txtContador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Main
             // 
@@ -393,6 +415,7 @@
         private System.Windows.Forms.TextBox txtProgramaXSD;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialogXSD_exe;
+        private System.Windows.Forms.TextBox txtContador;
     }
 }
 

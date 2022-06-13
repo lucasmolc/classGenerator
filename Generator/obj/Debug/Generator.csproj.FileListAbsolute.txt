@@ -8,3 +8,13 @@ C:\Users\HardP\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generat
 C:\Users\HardP\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.exe
 C:\Users\HardP\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.pdb
 C:\Users\HardP\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.Main.resources
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.exe.config
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.exe
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.pdb
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.AssemblyReference.cache
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.Main.resources
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.Properties.Resources.resources
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.GenerateResource.cache
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.CoreCompileInputs.cache
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.exe
+C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.pdb
