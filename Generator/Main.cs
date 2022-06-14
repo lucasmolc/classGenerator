@@ -9,6 +9,7 @@ using System.Collections.Generic;
 /*
  *  v1.0 - Desenvolvida uma ferramenta para auxiliar na geração de arquivos .cs a partir de arquivos .xsd
  *  v1.1 - Atualizada a solução para que seja possível criar os arquivos .cs a partir de 1 arquivo .xsd. Adicionado um contador para os XSD's complementares.
+ *  v1.2 - Atualizações visuais e adicionado campo XSD para que seja possível gerar arquivos .xsd a partir de arquivos .xml. Ajuste para o contador dos XSD's complementares seja exibido corretamente assim como a função de ciclar pelos arquivos selecionados.
  */
 
 namespace Generator
@@ -20,9 +21,9 @@ namespace Generator
             InitializeComponent();
         }
 
-        int tCount;
-        int count = 0;
-        string filePath, folderPath, exePath;
+        int tPos, aPos;
+
+        string filePath, folderPath, exePath, chave, nfse, args;
         List<string> importedFiles = new List<string>();
 
         private void btnXSDPrincipal_Click(object sender, EventArgs e)
@@ -52,18 +53,25 @@ namespace Generator
             txtXSDImportados.Text = "";
             txtPastaETC.Text = "";
             txtProgramaXSD.Text = "";
-            txtContador.Text = "0/0";
+            tPos = 0;
+            aPos = 0;
+            txtContador.Text = aPos + "/" + tPos;
             importedFiles = new List<string>();
+            chave = "";
+            nfse = "";
+            args = "";
+            filePath = "";
+            
         }
 
-        private void btnXSDImportados_Click(object sender, EventArgs e)
+        private void btnAdicionaImportados_Click(object sender, EventArgs e)
         {
             OpenFileDialog filesDialog = new OpenFileDialog();
             filesDialog.FilterIndex = 1;
             filesDialog.Filter = "xsd(*.xsd)|*.xsd|All Files|*.*";
             filesDialog.Title = "Select XSD";
             filesDialog.RestoreDirectory = true;
-            filesDialog.Multiselect = true;
+            filesDialog.Multiselect = false;
             if (!(string.IsNullOrEmpty(txtPastaETC.Text)))
                 filesDialog.InitialDirectory = folderPath;
             else
@@ -71,13 +79,34 @@ namespace Generator
 
             if (filesDialog.ShowDialog() == DialogResult.OK)
             {
-                for (int i = 0; i < filesDialog.FileNames.Length; i++)
-                {
-                    importedFiles.Add(filesDialog.SafeFileNames[i]);
-                }
-                tCount = importedFiles.Count;
+                importedFiles.Add(filesDialog.SafeFileName);
+                tPos = importedFiles.Count;
+                aPos = 1;
                 txtXSDImportados.Text = importedFiles[0];
-                txtContador.Text = "1/" + tCount;
+                txtContador.Text = aPos + "/" + tPos;
+            }
+        }
+
+        private void btnRemoveImportados_Click(object sender, EventArgs e)
+        {
+            if (importedFiles.Count != 0)
+            {
+                if (importedFiles.Count == 1)
+                {
+                    importedFiles.RemoveAt(0);
+                    tPos = 0;
+                    aPos = 0;
+                    txtXSDImportados.Text = null;
+                    txtContador.Text = aPos + "/" + tPos;
+                }
+                else
+                {
+                    importedFiles.RemoveAt(aPos - 1);
+                    tPos = importedFiles.Count;
+                    aPos = 1;
+                    txtXSDImportados.Text = importedFiles[0];
+                    txtContador.Text = aPos + "/" + tPos;
+                }
             }
         }
 
@@ -85,21 +114,21 @@ namespace Generator
         {
             try
             {
-                if (count < importedFiles.Count)
+                if (aPos < importedFiles.Count)
                 {
-                    if (count == 0)
+                    if (aPos == 0)
                     {
-                        count++;
+                        aPos++;
                     }
-                    txtXSDImportados.Text = importedFiles[count];
-                    txtContador.Text = count + 1 + "/" + tCount;
-                    count++;
+                    txtXSDImportados.Text = importedFiles[aPos];
+                    txtContador.Text = aPos + 1 + "/" + tPos;
+                    aPos++;
                 }
                 else
                 {
-                    count = 0;
-                    txtXSDImportados.Text = importedFiles[count];
-                    txtContador.Text = count + 1 + "/" + tCount;
+                    aPos = 1;
+                    txtXSDImportados.Text = importedFiles[aPos - 1];
+                    txtContador.Text = aPos + "/" + tPos;
                 }
             }
             catch (Exception ex)
@@ -112,9 +141,8 @@ namespace Generator
         {
             try
             {
-                string nfse = filePath.Substring(0, filePath.Length - 4);
-                string chave;
-                if (importedFiles.Count > 1)
+                nfse = filePath.Substring(0, filePath.Length - 4);
+                if (importedFiles.Count >= 1)
                 {
                     chave = "\"" + exePath + "\" -c -l:c# -n:" + nfse + " " + filePath + " " + importedFiles[0];
                     for (int i = 1; i < importedFiles.Count; i++)
@@ -127,17 +155,20 @@ namespace Generator
                     chave = "\"" + exePath + "\" -c -l:c# -n:" + nfse + " " + filePath;
                 }
 
-                string args = "@\"/k cd " + folderPath + " && dir && " + chave;
+                args = "@\"/k cd " + folderPath + " && dir && " + chave;
                 DialogResult dr = MessageBox.Show(chave, "Código Gerador", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 if (dr == DialogResult.OK)
                 {
                     ProcessStartInfo processStart = new ProcessStartInfo();
                     processStart.FileName = "cmd.exe";
-                    processStart.WindowStyle = ProcessWindowStyle.Normal;
+                    processStart.WindowStyle = ProcessWindowStyle.Hidden;
                     processStart.Arguments = args;
                     Process.Start(processStart);
+                    MessageBox.Show("Arquivo gerado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                    MessageBox.Show("Geração de arquivo interrompida!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
