@@ -24,6 +24,7 @@ namespace Generator
         int tPos, aPos;
 
         string filePath, folderPath, exePath, chave, nfse, args;
+        string xmlFolderPath, xmlFilePath, xmlOutputFilePath, xmlExePath, xsdName;
         List<string> importedFiles = new List<string>();
 
         private void btnXSDPrincipal_Click(object sender, EventArgs e)
@@ -62,6 +63,128 @@ namespace Generator
             args = "";
             filePath = "";
             
+        }
+
+        private void btnAdicionaETC_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            folderDialog.RootFolder = Environment.SpecialFolder.Desktop;
+            folderDialog.ShowNewFolderButton = true;
+            folderDialog.Description = "Select ETC Folder";
+
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                txbPastaEtc.Text = folderDialog.SelectedPath;
+                lblDiretorio.Text = folderDialog.SelectedPath;
+                xmlFolderPath = folderDialog.SelectedPath;
+            }
+        }
+
+        private void btnLimpaXml_Click(object sender, EventArgs e)
+        {
+            txbArquivoXml.Text = "";
+            txbOutput.Text = "";
+            txbPastaEtc.Text = "";
+            txbProgramaXsd.Text = "";
+            xmlExePath = null;
+            xmlFilePath = null;
+            xmlFolderPath = null;
+            xmlOutputFilePath = null;
+            chave = "";
+        }
+
+        private void btnGerar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (xmlExePath != null && xmlFilePath != null && xmlFolderPath != null)
+                {
+                    chave = "\"" + xmlExePath + "\" " + xmlFilePath;
+
+                    if (!string.IsNullOrEmpty(txbOutput.Text))
+                        chave = chave + " /o:" + xmlOutputFilePath;
+                    else
+                        chave = chave + " /o:" + xmlFolderPath;
+
+                    args = "@\"/k cd " + xmlFolderPath + " && dir && " + chave;
+                }
+                else
+                    throw new OperationCanceledException();
+
+                DialogResult dr = MessageBox.Show(chave, "Código Gerador", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (dr == DialogResult.OK)
+                {
+                    ProcessStartInfo processStart = new ProcessStartInfo();
+                    processStart.FileName = "cmd.exe";
+                    processStart.WindowStyle = ProcessWindowStyle.Normal;
+                    processStart.Arguments = args;
+                    Process.Start(processStart);
+                }
+                else
+                    MessageBox.Show("Geração de arquivo interrompida!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Adicione os arquivos necessários!\r\r Erro: " + ex.Message, "Exception caught!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAdicionaXsdPrograma_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog xsdFileDialog = new OpenFileDialog();
+            xsdFileDialog.FilterIndex = 1;
+            xsdFileDialog.Filter = "exe(*.exe)|*.exe|All Files|*.*";
+            xsdFileDialog.Title = "Select XSD.exe";
+            xsdFileDialog.RestoreDirectory = true;
+            xsdFileDialog.Multiselect = false;
+            if (Directory.Exists(@"C:\Program Files\Microsoft SDKs\Windows"))
+                xsdFileDialog.InitialDirectory = @"C:\Program Files\Microsoft SDKs\Windows";
+            else if (Directory.Exists(@"C:\Program Files (x86)\Microsoft SDKs\Windows"))
+                xsdFileDialog.InitialDirectory = @"C:\Program Files (x86)\Microsoft SDKs\Windows";
+            else if (Directory.Exists(@"C:\Program Files (x86)\Microsoft.NET\SDK"))
+                xsdFileDialog.InitialDirectory = @"C:\Program Files (x86)\Microsoft.NET\SDK";
+            else
+                xsdFileDialog.InitialDirectory = "C:\\";
+
+            if (xsdFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txbProgramaXsd.Text = xsdFileDialog.FileName;
+                xmlExePath = xsdFileDialog.FileName;
+            }
+        }
+
+        private void btnAdicionaOutput_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            folderDialog.RootFolder = Environment.SpecialFolder.Desktop;
+            folderDialog.ShowNewFolderButton = true;
+            folderDialog.Description = "Select Output Folder";
+
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                txbOutput.Text = folderDialog.SelectedPath;
+                xmlOutputFilePath = folderDialog.SelectedPath;
+            }
+        }
+
+        private void btnAdicionaXml_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.FilterIndex = 1;
+            fileDialog.Filter = "xml(*.xml)|*.xml|All Files|*.*";
+            fileDialog.Title = "Select XML";
+            fileDialog.RestoreDirectory = true;
+            fileDialog.Multiselect = false;
+            if (!(string.IsNullOrEmpty(txbPastaEtc.Text)))
+                fileDialog.InitialDirectory = xmlFolderPath;
+            else
+                fileDialog.InitialDirectory = "C:\\";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txbArquivoXml.Text = fileDialog.SafeFileName;
+                xmlFilePath = fileDialog.SafeFileName;
+            }
         }
 
         private void btnAdicionaImportados_Click(object sender, EventArgs e)
@@ -137,7 +260,7 @@ namespace Generator
             }
         }
 
-        private void btnGerar_Click(object sender, EventArgs e)
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -162,10 +285,9 @@ namespace Generator
                 {
                     ProcessStartInfo processStart = new ProcessStartInfo();
                     processStart.FileName = "cmd.exe";
-                    processStart.WindowStyle = ProcessWindowStyle.Hidden;
+                    processStart.WindowStyle = ProcessWindowStyle.Normal;
                     processStart.Arguments = args;
                     Process.Start(processStart);
-                    MessageBox.Show("Arquivo gerado com sucesso!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Geração de arquivo interrompida!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

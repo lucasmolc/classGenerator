@@ -22,3 +22,4 @@ C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\bin\Debug\Generat
 C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.application
 C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.exe.manifest
 C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.application
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.SuggestedBindingRedirects.cache

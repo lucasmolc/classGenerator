@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Generator.exe" size="223656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Generator.exe" size="149928">
       <assemblyIdentity name="Generator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cAKshfXlh4D5PM3thgDyHDR/UeQfIziwgnt3hE5P1R8=</dsig:DigestValue>
+        <dsig:DigestValue>bpNmxO4T+ZFJjyxsMDO2FITC+USUQ7X1C5g37p9+Lyk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
