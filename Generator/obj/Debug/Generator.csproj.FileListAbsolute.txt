@@ -18,3 +18,8 @@ C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generat
 C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.CoreCompileInputs.cache
 C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.exe
 C:\Users\lucas\Source\Repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.pdb
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.exe.manifest
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\bin\Debug\Generator.application
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.exe.manifest
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.application
+C:\Users\lucas\source\repos\lucasmolc\classGenerator\Generator\obj\Debug\Generator.csproj.SuggestedBindingRedirects.cache
