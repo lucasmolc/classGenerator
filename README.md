@@ -5,4 +5,4 @@
 &nbsp;&nbsp;&nbsp;:poop: &nbsp;O programa funciona perfeitamente para gerar arquivos onde pode ser importado quantos XSD's necessários além do principal.\
 &nbsp;&nbsp;&nbsp;:hammer_and_wrench: &nbsp;Em sua última versão foi adicionado a opção de gerar um XSD a partir de um XML.\
 &nbsp;&nbsp;&nbsp;:zzz: &nbsp;Continuo trabalhando no projeto em minhas horas vagas e só paro quando estiver funcionando :100:%.\
-&nbsp;&nbsp;&nbsp;:speech_balloon: &nbsp;Aceito críticas construtivas e ideias para implementação no projeto! Agradeço desde já! :white_heart::sparkling_heart:
+&nbsp;&nbsp;&nbsp;:speech_balloon: &nbsp;Aceito críticas e ideias para implementação no projeto! Agradeço desde já! :white_heart::sparkling_heart:
